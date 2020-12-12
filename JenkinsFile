@@ -26,11 +26,7 @@ pipeline {
             }
         }
         
-        post{
-        	always{
-        		sh "java -jar TestJenkins-0.0.1-SNAPSHOT.jar"
-        		}
-        	}
+        
         }
     }
 }
