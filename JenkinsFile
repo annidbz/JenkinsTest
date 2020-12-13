@@ -19,6 +19,8 @@ pipeline {
     stages {
         stage ('Compile Stage') {
         
+        echo "building version ${params.executeTests}"
+        
         when{
         	expression{
         	  params.executeTests 
