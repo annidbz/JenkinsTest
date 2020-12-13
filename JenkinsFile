@@ -43,7 +43,7 @@ pipeline {
             steps {
             script{
             	
-            		gv = load "script.groovy"
+            		gv.buildApp()
              }
             }
         }
@@ -52,8 +52,8 @@ pipeline {
 
             steps {
             	script{
-            	
-            		gv.buildApp()
+            		gv.testApp()
+            		
             		}
             }
         }
@@ -62,8 +62,8 @@ pipeline {
         stage ("Deployment Stage") {
             steps {
                script{
-            	
-            		gv.testApp()
+            	gv.deployApp()
+            		
             		} 
                 
             }
@@ -77,7 +77,7 @@ pipeline {
     
     post{
        		always{
-       			gv.deployApp()
+       			echo "--------------------------------------------------------------------------------------Execution complete---------------------------------------------------------------------------------------------"
        		} 
         }
         
