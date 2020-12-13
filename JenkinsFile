@@ -1,5 +1,5 @@
 CODE_CHANGES = true
-
+def gv
 pipeline {
     agent any
     
@@ -17,7 +17,20 @@ pipeline {
     }
 
     stages {
-        stage ('Compile Stage') {
+    
+    
+    	stage ("init") {
+
+            steps {
+            	script{
+            	
+            		gv = load "script.groovy"
+            		}
+            	
+            }
+        }
+    
+        stage ("Compile Stage") {
         
         
         
@@ -28,25 +41,30 @@ pipeline {
         }
 
             steps {
-            echo "building version ${params.executeTests}"
-            echo "Compile Stage"
-            bat "mvn clean compile" 
+            script{
+            	
+            		gv = load "script.groovy"
+             }
             }
         }
 
-        stage ('Testing Stage') {
+        stage ("Testing Stage") {
 
             steps {
-            	 echo "building version ${NEW_VERSION}" 
-                 bat "mvn test" 
+            	script{
+            	
+            		gv.buildApp()
+            		}
             }
         }
 
 
-        stage ('Deployment Stage') {
+        stage ("Deployment Stage") {
             steps {
-                 bat "mvn clean package" 
-                 echo "deploying version ${params.VERSION}"
+               script{
+            	
+            		gv.testApp()
+            		} 
                 
             }
         }
@@ -59,7 +77,7 @@ pipeline {
     
     post{
        		always{
-       			echo "Build complete"
+       			gv.deployApp()
        		} 
         }
         
