@@ -1,6 +1,5 @@
 def gitCheckout(){
-	checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], gitTool: '', submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'fc242f50-3c1e-41aa-90da-6462fac46f4d', url: 'https://github.com/annidbz/JenkinsTest.git']]])
-}
+	}
 
 
 def buildApp(){
