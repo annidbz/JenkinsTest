@@ -5,17 +5,17 @@ def gitCheckout(){
 def buildApp(){
 			echo "building version ${params.executeTests}"
             echo "Compile Stage"
-            bat "mvn clean compile" 
+            sh 'mvn clean compile' 
 }
 
 def testApp(){
 		 echo "building version ${NEW_VERSION}" 
-         bat "mvn test" 
+         sh 'mvn test' 
 }
 
 def deployApp(){
 		
-		 bat "mvn clean package" 
+		 bat 'mvn clean package' 
          echo "deploying version ${params.VERSION}"
 }
 
