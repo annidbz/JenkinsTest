@@ -15,7 +15,7 @@ def testApp(){
 
 def deployApp(){
 		
-		 bat 'mvn clean package' 
+		 sh 'mvn clean package' 
          echo "deploying version ${params.VERSION}"
 }
 
