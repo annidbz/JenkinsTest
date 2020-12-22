@@ -17,6 +17,8 @@ def deployApp(){
 		
 		 sh 'mvn clean package' 
          echo "deploying version ${params.VERSION}"
+         
+         sh 'printenv | sort'
 }
 
 return this
