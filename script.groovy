@@ -20,7 +20,7 @@ def deployApp(){
          
          sh 'printenv | sort'
          
-         writeFile file: '/bin/abc.txt', text: 'Hello'
+        writeFile file: ' /test/hello.txt', text: 'Hello'
          
        emailext body: 'test', subject: 'test', to: 'anirudha.agnihotri4@gmail.com'
        }
